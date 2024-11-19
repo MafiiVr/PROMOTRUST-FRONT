@@ -45,17 +45,16 @@ export class InsertarUsuarioComponent implements OnInit {
   edicion: boolean = false;
   hidePassword = true;
 
-  listatips: { value: number; viewValue: string }[] = [
-    { value: 1, viewValue: '1' },
-    { value: 2, viewValue: '2' },
-    { value: 3, viewValue: '3' },
+  listatips: Tips[] = [
+ 
   ];
 
   constructor(
     private us: UsuarioService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ts:TipsService
   ) {}
 
   ngOnInit(): void {
@@ -71,9 +70,11 @@ export class InsertarUsuarioComponent implements OnInit {
       apellidos: ['', Validators.required],
       telefono: ['', Validators.required],
       correo: ['', Validators.required],
-
       tips: ['', Validators.required],
     });
+    this.ts.list().subscribe(data=>{
+      this.listatips=data
+    })
   }
 
   aceptar(): void {

@@ -52,11 +52,11 @@
       </mat-form-field>
       <br />
 
-      <mat-form-field appearance="fill">
-        <mat-label>Selecciona Tip</mat-label>
-        <mat-select formControlName="tips"
-          >@for(food of listatips; track food) {
-          <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+      <mat-form-field>
+        <mat-label>Tips</mat-label>
+        <mat-select formControlName="tips">
+          @for (food of listatips; track food) {
+          <mat-option [value]="food.id">{{ food.id }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
